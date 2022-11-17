@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Form from './Components/Form';
+import List from './Components/List';
 
 function App() {
+  const [ box, setBox] =useState([
+    // {
+    //   backgroundColor: 'red',
+    //   width: '50px',
+    //   heigh: '50px',
+    //   margin: '5px'
+    // }
+  ])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form box={box} setBox = {setBox}/>
+      {
+        box.map((thebox, index) =>{
+          return <List key={index} boxObject={thebox}/>
+        })
+      }
     </div>
   );
 }
